@@ -18,8 +18,8 @@ const Schema=new mongoose.Schema({
 })
 
 Schema.pre('save',async function(next){
-    if(!this.isModified('playersRequired')){
-      
+    if(this.isModified('playersRequired') && !this.isModified('activity')){
+      this.remove()
     }
 })
 
