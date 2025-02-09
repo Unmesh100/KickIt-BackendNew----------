@@ -8,20 +8,13 @@ const DB=process.env.DATABASE_LOCAL
 const Schema=new mongoose.Schema({
     
     activity:String,
-      venue:String,
-      date:Date,
-      time:String,
-      playersRequired:Number
+    venue:String,
+    date:Date,
+    time:String
 
 
 })
 
-Schema.pre('save',async function(next){
-    if(!this.isModified('playersRequired')){
-      
-    }
-})
-
-const model=new mongoose.model('Events',Schema)
+const model=new mongoose.model('Tournament',Schema)
 
 module.exports=model
