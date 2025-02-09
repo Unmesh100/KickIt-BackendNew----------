@@ -29,6 +29,8 @@ router.route('/createEvent').post(eventController.createEvent)
 
 router.route('/home').get(eventController.getAllEvents)
 
+router.route('/createTournament').post(eventController.postTournament)
+
 router.route('/home/:id').get(eventController.getAllEvents)
 
 router.route('/profile').get(authController.protect,userController.getProfile)
@@ -41,6 +43,12 @@ router.route('/signUp').post(authController.signUp)
 
 router.route('/login').post(authController.login)
 
+router.route('/updateMatches').patch(eventController.updateTotalPlayers)
+
+//router.route('/sendEventDetails').post()
+
 router.route('/logout').get(authController.logOut)
+
+router.route('/getTournaments').get(eventController.getAllTournaments)
 
 module.exports=router

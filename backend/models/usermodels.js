@@ -62,6 +62,8 @@ Schema.method('correctPassword', async function(candidatePassword,userPassword){
   return await bcrypt.compare(candidatePassword,userPassword)
 })
 
+
+
 const model=new mongoose.model('users',Schema)
 
 

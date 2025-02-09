@@ -85,6 +85,19 @@ console.log(newUser)
 
 })
 
+exports.updateMatches=catchAsync(async(req,res,next)=>{
+ 
+  const token=req.cookies.token
+  const decode=jwt.verify(token,process.env.JWT_SECRET)
+
+  const newUser=await userModel.findByIdAndUpdate(decode.id,{ $inc: {matchesPlayed:0.5}})
+
+  return res.status(200).json({
+    status:"success",
+    newUser
+  })
+})
+
 exports.makeChanges=catchAsync(async(req,res,next)=>{
    req.id=y
    
