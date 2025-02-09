@@ -11,7 +11,8 @@ const Schema=new mongoose.Schema({
       venue:String,
       date:Date,
       time:String,
-      playersRequired:Number
+      playersRequired:Number,
+      admin:String
 
 
 })

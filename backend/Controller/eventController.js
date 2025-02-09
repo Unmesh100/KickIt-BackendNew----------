@@ -137,6 +137,8 @@ exports.createEvent = catchAsync(async (req, res, next) => {
    }
    const body = req.body
 
+   req.body.admin=decode.id
+
    const data = {
       "activity": (req.body.activity),
       "venue": req.body.venue,
