@@ -171,7 +171,21 @@ exports.getAllTournaments = async (req, res, next) => {
 }
 
 exports.updateTotalPlayers = catchAsync(async (req, res, next) => {
+  
+   const token=req.cookies.token
+   const decode=jwt.verify(token,process.env.JWT_SECRET)
+  
+   const event=await eventModel.find({admin:decode.id})
 
+   
+   console.log(event) 
+
+   const newUser=await eventModel.findByIdAndUpdate(event._id,{ $inc: {matchesPlayed:0.5}})
+ 
+   return res.status(200).json({
+     status:"success",
+     newUser
+   })
 
 
 })

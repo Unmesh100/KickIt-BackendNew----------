@@ -55,9 +55,8 @@ exports.login=catchAsync(async (req,res,next)=>{
         expiresIn:process.env.JWT_EXPIRES_IN
     })
 
-    res.cookie('token',token,{
-        expiresIn:process.env.COOKIE_EXPIRES_IN
-    })
+    res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'None' });
+
 
    return res.status(200).json({
         status:"success",
@@ -85,7 +84,7 @@ exports.protect=catchAsync(async(req,res,next)=>{
 
  const user=await usermodel.findById(decode.id)
 
- res.cookie('token',token)
+ res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'None' });
  next()
  
 })
