@@ -46,13 +46,7 @@ process.on('uncaughtException',err=>{
 })
 
 
-mongoose.connect(DB,{
-    useNewUrlParser:true,
-    useFindAndModify:false
-    
-   
-   
-}).then((con)=>{
+mongoose.connect(DB).then((con)=>{
    
     console.log('Database is connected')
 })
